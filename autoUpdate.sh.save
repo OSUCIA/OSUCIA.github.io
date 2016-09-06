@@ -1,0 +1,27 @@
+#!/bin/bash
+cd Club #Move to the club's main Git folder
+#git pull #Update to the most recent set of files.
+
+for $file in *.md 
+do #For each .md file in the main folder
+  run mv -f "$file" ../pages/"$file" #Move it to the pages folder, to be a standalone
+done
+
+cd Minutes #Move to the folder containing meeting minutes
+for $file in *.md
+do #For each .md file
+  mv -f "$file" ../posts/$file #Move it to the posts folder, to be blog style
+done
+
+cd ../pages #Move to the pages folder
+mv README.md ../index.md #Move the Readme out, to be the home page
+
+cd .. #Move to the main site folder
+jekyll serve
+
+#jekyll build #Build the site using config defaults
+
+#cd OutPut #Move to the output folder, containing the webpage section of the Git
+#git add * #Add all of the updates
+#git commit -m "Auto update of webpage based on main git."
+
