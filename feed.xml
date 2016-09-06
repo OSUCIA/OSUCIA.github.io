@@ -5,8 +5,8 @@
     <description>OSU Cyberinsfrastructure Association</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 05 Sep 2016 18:42:15 -0700</pubDate>
-    <lastBuildDate>Mon, 05 Sep 2016 18:42:15 -0700</lastBuildDate>
+    <pubDate>Mon, 05 Sep 2016 19:35:08 -0700</pubDate>
+    <lastBuildDate>Mon, 05 Sep 2016 19:35:08 -0700</lastBuildDate>
     <generator>Jekyll v2.2.0</generator>
     
       <item>
@@ -25,50 +25,156 @@
       &lt;li&gt;Total Present: 12&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;Open Issues:&lt;br /&gt;
- A) Current Communication and services - Discussion
-    &lt;ul&gt;
-      &lt;li&gt;Sign up for slack to recieve up-to-date information on club meetings, etc.&lt;/li&gt;
-      &lt;li&gt;Email with be used sparingly&lt;/li&gt;
-    &lt;/ul&gt;
+  &lt;li&gt;Open Issues:
+    &lt;ol&gt;
+      &lt;li&gt;Current Communication and services - Discussion
+        &lt;ul&gt;
+          &lt;li&gt;Sign up for slack to recieve up-to-date information on club meetings, etc.&lt;/li&gt;
+          &lt;li&gt;Email with be used sparingly&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Membership Fees - Yea or Nay
+        &lt;ul&gt;
+          &lt;li&gt;Vote was ‘all in favor’ or $5 annual membership fee&lt;/li&gt;
+          &lt;li&gt;Special Fun Distribution - Yea or Nay
+            &lt;ul&gt;
+              &lt;li&gt;Vote was ‘all in favor’ to earmark the membership fees to be used for membership discounts. Alternative uses require a supermajority vote.&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Club funds - Discussion
+        &lt;ul&gt;
+          &lt;li&gt;AFAP at the end of the fall semester - have a plan to present to SGA&lt;/li&gt;
+          &lt;li&gt;College Councils are good funding sources but usually stipulations (A&amp;amp;S, CEAT, etc.)&lt;/li&gt;
+          &lt;li&gt;Also think of offices with a common/similar mission who could provide cosponsorship - again, usually with stipulations&lt;/li&gt;
+          &lt;li&gt;Corporate sponsorship for special projects (Like building the cluster?)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Club goals for the year - Discussion
+        &lt;ul&gt;
+          &lt;li&gt;Main foal this year: to provide educational and skil-building opportinuties for CIA members - building the cluster, attending conferences, competitions, workshops, etc.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Attendance requirements - Yea or Nay
+        &lt;ul&gt;
+          &lt;li&gt;Those in attendance feel the $5 membership is probably enough incentive to keep members involved, but encourage Slack communication among regular members&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
   &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;B) Membership Fees - Yea or Nay
-  * Vote was ‘all in favor’ or $5 annual membership fee
-  * Special Fun Distribution - Yea or Nay
-    * Vote was ‘all in favor’ to earmark the membership fees to be used for membership discounts. Alternative uses require a supermajority vote.&lt;/p&gt;
-
-&lt;p&gt;C) Club funds - Discussion
-  * AFAP at the end of the fall semester - have a plan to present to SGA
-  * College Councils are good funding sources but usually stipulations (A&amp;amp;S, CEAT, etc.)
-  * Also think of offices with a common/similar mission who could provide cosponsorship - again, usually with stipulations
-  * Corporate sponsorship for special projects (Like building the cluster?)&lt;/p&gt;
-
-&lt;p&gt;D) Club goals for the year - Discussion
-  * Main foal this year: to provide educational and skil-building opportinuties for CIA members - building the cluster, attending conferences, competitions, workshops, etc.&lt;/p&gt;
-
-&lt;p&gt;E) Attendance requirements - Yea or Nay
-  * Those in attendance feel the $5 membership is probably enough incentive to keep members involved, but encourage Slack communication among regular members&lt;/p&gt;
-
-&lt;ol&gt;
   &lt;li&gt;New Business
- A) New Cluster Computer - Discussion
-    &lt;ul&gt;
-      &lt;li&gt;Members will contribute ideas for cluster components, ideas, etc. over the next month before meeting in the Tiny Titan Slack channel&lt;/li&gt;
-    &lt;/ul&gt;
+    &lt;ol&gt;
+      &lt;li&gt;New Cluster Computer - Discussion
+        &lt;ul&gt;
+          &lt;li&gt;Members will contribute ideas for cluster components, ideas, etc. over the next month before meeting in the Tiny Titan Slack channel&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Creation of “Teams” - Yea or Nay
+        &lt;ul&gt;
+          &lt;li&gt;All in attendance agreed project teams were a good idea, but suggested that it’s important to make sure the teams stay connected and don’t get siloed&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Call for further topics - Discussion
+        &lt;ul&gt;
+          &lt;li&gt;Association of Computing Machinery - Meeting was at 5:30 that day
+            &lt;ul&gt;
+              &lt;li&gt;The “unofficial” computer science club&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;2016 OK-LSAMP Research Symposium - Sept. 24&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
   &lt;/li&gt;
+  &lt;li&gt;Adjournment&lt;/li&gt;
 &lt;/ol&gt;
+</description>
+        <pubDate>Wed, 31 Aug 2016 11:00:00 -0700</pubDate>
+        <link>/2016/08/31/GeneralMeeting/</link>
+        <guid isPermaLink="true">/2016/08/31/GeneralMeeting/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>First General Meeting</title>
+        <description>&lt;h2 id=&quot;cyberinfrastructure-association&quot;&gt;Cyberinfrastructure Association&lt;/h2&gt;
 
-&lt;p&gt;B) Creation of “Teams” - Yea or Nay
-  * All in attendance agreed project teams were a good idea, but suggested that it’s important to make sure the teams stay connected and don’t get siloed&lt;/p&gt;
-
-&lt;p&gt;C) Call for further topics - Discussion
-  * Association of Computing Machinery - Meeting was at 5:30 that day
-    * The “unofficial” computer science club
-  * 2016 OK-LSAMP Research Symposium - Sept. 24&lt;/p&gt;
+&lt;h3 id=&quot;meeting-agenda&quot;&gt;Meeting Agenda&lt;/h3&gt;
 
 &lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Call to Order&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Roll Call
+    &lt;ul&gt;
+      &lt;li&gt;Officers present: Matthew Whitlock (President), Brandon White (Treasurer), Cameron Mehmken (Membership Chair)&lt;/li&gt;
+      &lt;li&gt;Total Present: 12&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Open Issues:
+    &lt;ol&gt;
+      &lt;li&gt;Current Communication and services - Discussion
+        &lt;ul&gt;
+          &lt;li&gt;Sign up for slack to recieve up-to-date information on club meetings, etc.&lt;/li&gt;
+          &lt;li&gt;Email with be used sparingly&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Membership Fees - Yea or Nay
+        &lt;ul&gt;
+          &lt;li&gt;Vote was ‘all in favor’ or $5 annual membership fee&lt;/li&gt;
+          &lt;li&gt;Special Fun Distribution - Yea or Nay
+            &lt;ul&gt;
+              &lt;li&gt;Vote was ‘all in favor’ to earmark the membership fees to be used for membership discounts. Alternative uses require a supermajority vote.&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Club funds - Discussion
+        &lt;ul&gt;
+          &lt;li&gt;AFAP at the end of the fall semester - have a plan to present to SGA&lt;/li&gt;
+          &lt;li&gt;College Councils are good funding sources but usually stipulations (A&amp;amp;S, CEAT, etc.)&lt;/li&gt;
+          &lt;li&gt;Also think of offices with a common/similar mission who could provide cosponsorship - again, usually with stipulations&lt;/li&gt;
+          &lt;li&gt;Corporate sponsorship for special projects (Like building the cluster?)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Club goals for the year - Discussion
+        &lt;ul&gt;
+          &lt;li&gt;Main foal this year: to provide educational and skil-building opportinuties for CIA members - building the cluster, attending conferences, competitions, workshops, etc.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Attendance requirements - Yea or Nay
+        &lt;ul&gt;
+          &lt;li&gt;Those in attendance feel the $5 membership is probably enough incentive to keep members involved, but encourage Slack communication among regular members&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;New Business
+    &lt;ol&gt;
+      &lt;li&gt;New Cluster Computer - Discussion
+        &lt;ul&gt;
+          &lt;li&gt;Members will contribute ideas for cluster components, ideas, etc. over the next month before meeting in the Tiny Titan Slack channel&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Creation of “Teams” - Yea or Nay
+        &lt;ul&gt;
+          &lt;li&gt;All in attendance agreed project teams were a good idea, but suggested that it’s important to make sure the teams stay connected and don’t get siloed&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Call for further topics - Discussion
+        &lt;ul&gt;
+          &lt;li&gt;Association of Computing Machinery - Meeting was at 5:30 that day
+            &lt;ul&gt;
+              &lt;li&gt;The “unofficial” computer science club&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;2016 OK-LSAMP Research Symposium - Sept. 24&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
   &lt;li&gt;Adjournment&lt;/li&gt;
 &lt;/ol&gt;
 </description>
