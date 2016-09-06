@@ -10,7 +10,7 @@ for file in *.md; do
 done
 
 cd Minutes
-rm ../../_posts/* #Remove all currently shown - to make sure deleted/renamed files aren't displayed.
+rm ../../_posts/*.md #Remove all currently shown - to make sure deleted/renamed files aren't displayed.
 for file in *.md; do
   mv -f "$file" ../../_posts/"$file"
 done
