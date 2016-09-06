@@ -2,7 +2,8 @@
 #Updates the git repository with the club's website based on the files in the
 #   main repository
 cd Club #Move to the club's main Git folder
-git reset --hard origin #Update to the most recent set of files.
+git pull #Pull most recent files
+git reset --hard origin #Verify files are only what is contained in the git.
 
 for file in *.md; do
   mv -f "$file" ../pages/"$file"
