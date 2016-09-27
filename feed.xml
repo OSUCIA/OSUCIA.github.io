@@ -5,15 +5,15 @@
     <description>OSU Cyberinsfrastructure Association</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 05 Sep 2016 19:39:05 -0700</pubDate>
-    <lastBuildDate>Mon, 05 Sep 2016 19:39:05 -0700</lastBuildDate>
-    <generator>Jekyll v2.2.0</generator>
+    <pubDate>Tue, 27 Sep 2016 16:01:18 -0500</pubDate>
+    <lastBuildDate>Tue, 27 Sep 2016 16:01:18 -0500</lastBuildDate>
+    <generator>Jekyll v3.2.1</generator>
     
       <item>
         <title>First General Meeting</title>
-        <description>&lt;h2 id=&quot;cyberinfrastructure-association&quot;&gt;Cyberinfrastructure Association&lt;/h2&gt;
+        <description>&lt;p&gt;##Cyberinfrastructure Association&lt;/p&gt;
 
-&lt;h3 id=&quot;meeting-agenda&quot;&gt;Meeting Agenda&lt;/h3&gt;
+&lt;p&gt;###Meeting Agenda&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -90,7 +90,7 @@
   &lt;li&gt;Adjournment&lt;/li&gt;
 &lt;/ol&gt;
 </description>
-        <pubDate>Wed, 31 Aug 2016 11:00:00 -0700</pubDate>
+        <pubDate>Wed, 31 Aug 2016 13:00:00 -0500</pubDate>
         <link>/2016/08/31/GeneralMeeting/</link>
         <guid isPermaLink="true">/2016/08/31/GeneralMeeting/</guid>
         
@@ -99,9 +99,9 @@
     
       <item>
         <title>Sample Post Title</title>
-        <description>&lt;h1 id=&quot;hello&quot;&gt;Hello!&lt;/h1&gt;
+        <description>&lt;p&gt;#Hello!&lt;/p&gt;
 </description>
-        <pubDate>Wed, 03 Aug 2016 13:00:00 -0700</pubDate>
+        <pubDate>Wed, 03 Aug 2016 15:00:00 -0500</pubDate>
         <link>/2016/08/03/Sample/</link>
         <guid isPermaLink="true">/2016/08/03/Sample/</guid>
         
