@@ -1,4 +1,4 @@
-#!/bin/bash
+# !/bin/bash
 #Updates the git repository with the club's website based on the files in the
 #   main repository
 cd Club #Move to the club's main Git folder
