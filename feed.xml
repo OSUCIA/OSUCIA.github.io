@@ -5,15 +5,15 @@
     <description>OSU Cyberinsfrastructure Association</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 19 Oct 2016 13:54:30 -0500</pubDate>
-    <lastBuildDate>Wed, 19 Oct 2016 13:54:30 -0500</lastBuildDate>
+    <pubDate>Wed, 19 Oct 2016 14:01:32 -0500</pubDate>
+    <lastBuildDate>Wed, 19 Oct 2016 14:01:32 -0500</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
         <title>First General Meeting</title>
-        <description>&lt;p&gt;##Cyberinfrastructure Association&lt;/p&gt;
+        <description>&lt;h2 id=&quot;cyberinfrastructure-association&quot;&gt;Cyberinfrastructure Association&lt;/h2&gt;
 
-&lt;p&gt;###Meeting Agenda&lt;/p&gt;
+&lt;h3 id=&quot;meeting-agenda&quot;&gt;Meeting Agenda&lt;/h3&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -99,7 +99,7 @@
     
       <item>
         <title>Sample Post Title</title>
-        <description>&lt;p&gt;#Hello!&lt;/p&gt;
+        <description>&lt;h1 id=&quot;hello&quot;&gt;Hello!&lt;/h1&gt;
 </description>
         <pubDate>Wed, 03 Aug 2016 15:00:00 -0500</pubDate>
         <link>/2016/08/03/Sample/</link>
