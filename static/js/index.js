@@ -100,7 +100,7 @@ function categoryDisplay() {
 }
 
 /**
- * 回到顶部
+ * Back to top
  */
 function backToTop() {
     //滚页面才显示返回顶部
