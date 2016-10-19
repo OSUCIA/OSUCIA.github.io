@@ -17,6 +17,7 @@ done
 
 cd ../../pages
 mv README.md ../index.md
+rm "Fall Agenda.md"
 
 cd ..
 jekyll build #Build the site using config defaults
