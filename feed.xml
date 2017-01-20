@@ -5,9 +5,84 @@
     <description>OSU Cyberinsfrastructure Association</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 19 Oct 2016 14:13:11 -0500</pubDate>
-    <lastBuildDate>Wed, 19 Oct 2016 14:13:11 -0500</lastBuildDate>
+    <pubDate>Thu, 19 Jan 2017 22:10:02 -0600</pubDate>
+    <lastBuildDate>Thu, 19 Jan 2017 22:10:02 -0600</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Third General Meeting</title>
+        <description>&lt;h2 id=&quot;cyberinfrastructure-association&quot;&gt;Cyberinfrastructure Association&lt;/h2&gt;
+
+&lt;h3 id=&quot;meeting-agenda&quot;&gt;Meeting Agenda&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Call to Order: 6:13 p.m.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Roll Call
+    &lt;ul&gt;
+      &lt;li&gt;Officers present: Matthew Whitlock (President),  Patrick McDonald (VP), Brandon White (Treasurer), Cameron Mehmken (Membership Chair), Christian Griffith (Marketing Chair)&lt;/li&gt;
+      &lt;li&gt;Total Present: 10&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Open Issues:
+    &lt;ul&gt;
+      &lt;li&gt;Membership Fees
+        &lt;ul&gt;
+          &lt;li&gt;Reviewed wording for by-laws, merged pull request since last voted on&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;New Business
+    &lt;ul&gt;
+      &lt;li&gt;Cluster discussion
+        &lt;ul&gt;
+          &lt;li&gt;Brandon created a spreadsheet to compare specs&lt;/li&gt;
+          &lt;li&gt;Orange Pi’s brought up as an option - a little more expensive but possibly more capable (also less documentation = could be more fun)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Creation of “Teams”
+        &lt;ul&gt;
+          &lt;li&gt;Software and Hardware Team Leaders were voted on to be created last meeting&lt;/li&gt;
+          &lt;li&gt;Elections done on Slack as a possibility - also looking at poll conductors, forms, etc.&lt;/li&gt;
+          &lt;li&gt;Leaders don’t need to be experts but need to be committed and organized, willing to ask and learn, and keep their teams on task&lt;/li&gt;
+          &lt;li&gt;Software Leader could help guide “Virtual Machine Cluster”
+            &lt;ul&gt;
+              &lt;li&gt;Get the virtual machine running without having to wait for hardware&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Training Sessions
+        &lt;ul&gt;
+          &lt;li&gt;New User Training&lt;/li&gt;
+          &lt;li&gt;Software Carpentry workshops&lt;/li&gt;
+          &lt;li&gt;Polls for content &amp;amp; dates&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Competitions
+        &lt;ul&gt;
+          &lt;li&gt;Too late for SC16, look at putting an “Oklahoma team” together for SC17 or SC18&lt;/li&gt;
+          &lt;li&gt;SC cluster competitions involve: 48 hours, need vendors&lt;/li&gt;
+          &lt;li&gt;Tulsa Competition - April 2017
+            &lt;ul&gt;
+              &lt;li&gt;One day, need SD cards, programming involved - look at vendors&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Adjournment - 6:50 p.m.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Mon, 10 Oct 2016 13:00:00 -0500</pubDate>
+        <link>/2016/10/10/GeneralMeeting/</link>
+        <guid isPermaLink="true">/2016/10/10/GeneralMeeting/</guid>
+        
+        
+      </item>
     
       <item>
         <title>First General Meeting</title>

@@ -103,7 +103,7 @@ function categoryDisplay() {
  * Back to top
  */
 function backToTop() {
-    //滚页面才显示返回顶部
+    //Rolling page to display Back to top
     $(window).scroll(function() {
         if ($(window).scrollTop() > 100) {
             $("#top").fadeIn(500);
@@ -111,7 +111,7 @@ function backToTop() {
             $("#top").fadeOut(500);
         }
     });
-    //点击回到顶部
+    //Click back to top.
     $("#top").click(function() {
         $("body").animate({
             scrollTop: "0"
