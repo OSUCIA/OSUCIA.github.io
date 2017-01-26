@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Creating Virtual Clusters</title>
+	<title>Virtual HPC</title>
 	<meta name="description" content="OSU Cyberinsfrastructure Association">
 	
 	<link rel="canonical" href="/pages/Creating%20Virtual%20Clusters/">
@@ -95,7 +95,7 @@
             
               <li class="active">
               
-            <a href="/pages/Creating%20Virtual%20Clusters/"><span class="glyphicon "></span> Creating Virtual Clusters</a></li>
+            <a href="/pages/Creating%20Virtual%20Clusters/"><span class="glyphicon "></span> Virtual HPC</a></li>
           
         
           
@@ -144,7 +144,7 @@ md5sum:</p>
 
 <p>Create VM / Configure virtual hardware<br />
 New VM</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>Name: node0
+<div class="language-text highlighter-rouge"><pre class="highlight"><code>Name: node0
 Type: Linux
 Version: Ubuntu 64-bit
 Memory size: 1024 MB
@@ -158,7 +158,7 @@ Create
 </code></pre>
 </div>
 <p>Open settings for the VM</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>Network
+<div class="language-text highlighter-rouge"><pre class="highlight"><code>Network
 	Adapter 1
 		Enabled
 		Attached to: NAT
@@ -173,7 +173,7 @@ Start the VM<br />
 Should be prompted for startup disk, if not click Devices menu → CD/DVD Devices → Choose a virtual CD/DVD disk file, choose the lubuntu ISO file. If you have to click the menu, then you’ll have to reset the power to the VM (Machine menu → Reset).</p>
 
 <p>Linux Installation</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>Choose English
+<div class="language-text highlighter-rouge"><pre class="highlight"><code>Choose English
 Choose Install Lubuntu
 Installation language: English (again, default)
 Country: United States (default)
@@ -212,12 +212,12 @@ Open terminal (menu → System Tools → LXTerminal)</p>
 Second, you have Lubuntu use this list to automatically download the newest versions of all of the installed packages and update them.<br />
 In order to run these, we have to get administrative privileges. We do this by starting the command with <code class="highlighter-rouge">sudo</code> - this tells the terminal to run the command as “root”, which is Linux’s version of Administrator.<br />
 The command itself uses <code class="highlighter-rouge">apt-get</code> which is the program that we’ll use to update all of the files on this system.</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get update
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo apt-get update
 sudo apt-get upgrade
 </code></pre>
 </div>
 <p>Now we’ll use the <code class="highlighter-rouge">apt-get</code> command to actually get and application - or in this case 9 of them at once! Each name you see after <code class="highlighter-rouge">install</code> is a different program that we’re asking to be installed.</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install nano vim curl openssh-server nfs-kernel-server build-essential git mpich mpich-doc
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo apt-get install nano vim curl openssh-server nfs-kernel-server build-essential git mpich mpich-doc
 </code></pre>
 </div>
 
@@ -228,7 +228,7 @@ Now we need to configure the “VM only” adapter to talk to all of the other m
   <li>
     <p>First figure out the device name for the network adapter using the NetworkManager Command Line Interface <code class="highlighter-rouge">nmcli</code>.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>nmcli device
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>nmcli device
 </code></pre>
     </div>
     <p>The device you want will probably be in red; I got “enp0s8”</p>
@@ -241,7 +241,7 @@ We then give it the <code class="highlighter-rouge">ifname</code> (<strong>i</st
 Next we tell it the <code class="highlighter-rouge">type</code> of connection is <code class="highlighter-rouge">ethernet</code>, and give it an <code class="highlighter-rouge">ipv4</code> address of <code class="highlighter-rouge">192.168.13.0/24</code><br />
 Finally, we pass it <code class="highlighter-rouge">gw4</code> to tell it the <strong>g</strong>ate<strong>w</strong>ay for ipv<strong>4</strong> is its own ipv4 address that we just told it.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo nmcli c add con-name cluster ifname enp0s8 type ethernet ip4 192.168.13.0/24 gw4 192.168.13.0
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo nmcli c add con-name cluster ifname enp0s8 <span class="nb">type </span>ethernet ip4 192.168.13.0/24 gw4 192.168.13.0
 </code></pre>
     </div>
   </li>
@@ -251,7 +251,7 @@ Again we’re dealing with a <code class="highlighter-rouge">c</code>onnection, 
 We have to tell it the <code class="highlighter-rouge">id</code> of the cluster, which is the con-name we gave it above: <code class="highlighter-rouge">cluster</code>.
 Finally we tell it that we want to modify the <code class="highlighter-rouge">ipv4.route-metric</code> by setting it to 101. This tells Lubuntu to prioritize this network less that the direct connection to the internet.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo nmcli c modify id cluster ipv4.route-metric 101
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo nmcli c modify id cluster ipv4.route-metric 101
 </code></pre>
     </div>
   </li>
@@ -262,14 +262,14 @@ Finally we tell it that we want to modify the <code class="highlighter-rouge">ip
   <li>
     <p>Use <code class="highlighter-rouge">mkdir</code> to <strong>m</strong>a<strong>k</strong>e the <strong>dir</strong>ectory that we’ll share. We’re naming it <code class="highlighter-rouge">shared</code>, and placing it in the root directory.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo mkdir /shared
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo mkdir /shared
 </code></pre>
     </div>
   </li>
   <li>
     <p>Now we use <code class="highlighter-rouge">chown</code> to <strong>ch</strong>ange the <strong>own</strong>ership of the directory we made. This just makes sure it is owned by our user (<code class="highlighter-rouge">pi</code>) on our machine (<code class="highlighter-rouge">pi</code>).</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo chown pi:pi /shared
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo chown pi:pi /shared
 </code></pre>
     </div>
   </li>
@@ -277,7 +277,7 @@ Finally we tell it that we want to modify the <code class="highlighter-rouge">ip
     <p>Lets make a test file on this virtual machine, then we can see if it appears on the others.
 We’ll tell the shell to <code class="highlighter-rouge">echo</code> our sentence into (<code class="highlighter-rouge">&gt;</code>) a new file in our <code class="highlighter-rouge">shared</code> folder, called <code class="highlighter-rouge">test</code>.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>echo “My icebox is full of lagomorphs!” &gt; /shared/test.txt
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">echo</span> “My icebox is full of lagomorphs!” &gt; /shared/test.txt
 </code></pre>
     </div>
   </li>
@@ -286,14 +286,14 @@ We’ll tell the shell to <code class="highlighter-rouge">echo</code> our senten
 To do this we need to add line to the file <code class="highlighter-rouge">/etc/exports</code>: <code class="highlighter-rouge">/shared 192.168.13.0/24(rw,no_root_squash,async,no_subtree_check)</code><br />
 You can do this with either <code class="highlighter-rouge">nano</code> or <code class="highlighter-rouge">vim</code>, but we’ll use <code class="highlighter-rouge">nano</code></p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo nano /etc/exports
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo nano /etc/exports
 </code></pre>
     </div>
 
     <p>Make your changes and press ctrl-x, press y to save your changes, and press enter to keep the same filename.<br />
 We also need to update nsf to use these new settings. We do this by <code class="highlighter-rouge">export</code>ing the settings. The <code class="highlighter-rouge">ra</code> flags tell it to update all of its settings, and remove any invalid kernels and do generaly cleanup.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo exportfs -ra
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo exportfs -ra
 </code></pre>
     </div>
   </li>
@@ -304,13 +304,13 @@ We also need to update nsf to use these new settings. We do this by <code class=
 
 <p>To use <code class="highlighter-rouge">nano</code> to do this you’ll run</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo nano /etc/hosts
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo nano /etc/hosts
 </code></pre>
 </div>
 
 <p>Then you’ll add these to the file:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>192.168.13.0	node0
+<div class="language-text highlighter-rouge"><pre class="highlight"><code>192.168.13.0	node0
 192.168.13.1	node1
 192.168.13.2	node2
 192.168.13.3	node3
@@ -328,7 +328,7 @@ We also need to update nsf to use these new settings. We do this by <code class=
 To solve this we’ll generate an SSH key that doesn’t have a password, and just use that key for each node’s communication.<br />
 To do this we use <code class="highlighter-rouge">ssh-keygen</code> and tell it the <code class="highlighter-rouge">t</code>ype of key we want is <code class="highlighter-rouge">rsa</code>, which is to say a key generated with an rsa algorithm.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ssh-keygen -t rsa
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ssh-keygen -t rsa
 </code></pre>
 </div>
 
@@ -337,7 +337,7 @@ Now we want to take the keys generated and add them to our authorized keys list.
 First we use <code class="highlighter-rouge">cat</code>, which in this usage just prints the contents of the file you give it - we’ll give it <code class="highlighter-rouge">~/.ssh./id_rsa.pub</code>.<br />
 Now that we’re printing the keys, lets tell the console to output to our authorized keys list and just add it to that file. This is done by using <code class="highlighter-rouge">&gt;&gt;</code> to indicate we want to append the information to a file, and <code class="highlighter-rouge">~/.ssh/authorized_keys</code> is the location we want to add it to.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
 </code></pre>
 </div>
 
@@ -345,7 +345,7 @@ Now that we’re printing the keys, lets tell the console to output to our autho
 
 <h2 id="run-through-the-above-process-to-setup-all-of-the-slave-nodes">Run through the above process to setup all of the slave nodes.</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Setup VM(s) for slave node(s)
+<div class="language-text highlighter-rouge"><pre class="highlight"><code>Setup VM(s) for slave node(s)
 Create VM / Configure virtual hardware
 Follow procedure for master node substituting “node1” (or whatever number) for “node0”.
 Install Linux
@@ -358,7 +358,7 @@ Open terminal
 
 <h3 id="install-updates-and-needed-packages-1">Install updates and needed packages</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get update
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install nano vim curl openssh-server mpich mpich-doc nfs-common
 </code></pre>
@@ -368,7 +368,7 @@ sudo apt-get install nano vim curl openssh-server mpich mpich-doc nfs-common
 
 <p>This time we’ll run it almost the same as above, but we won’t have the same IP address for the node as for the gateway. We want this node to use node0 as the gateway, so we input the IP for node0 after <code class="highlighter-rouge">gw4</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo nmcli c add con-name cluster ifname enp0s8 type ethernet ip4 192.168.13.1/24 gw4 192.168.13.0
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo nmcli c add con-name cluster ifname enp0s8 <span class="nb">type </span>ethernet ip4 192.168.13.1/24 gw4 192.168.13.0
 sudo nmcli c modify id cluster ipv4.route-metric 101
 </code></pre>
 </div>
@@ -376,7 +376,7 @@ sudo nmcli c modify id cluster ipv4.route-metric 101
 <h3 id="make-sure-the-internal-cluster-network-is-working">Make sure the internal cluster network is working</h3>
 
 <p>To do this we’ll <code class="highlighter-rouge">ping</code> the master node, if the master node responds we’re good to go. If not, make sure you didn’t skip any steps above. If you’re in the training session and this doesn’t work, now is a good time to put up your red sticky.</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>ping 192.168.13.0
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ping 192.168.13.0
 </code></pre>
 </div>
 
@@ -384,14 +384,14 @@ sudo nmcli c modify id cluster ipv4.route-metric 101
 
 <p>We need to get access to that shared folder on all of the virtual machines, so first we <strong>m</strong>a<strong>k</strong>e the <strong>dir</strong>ectory on this machine, then we <code class="highlighter-rouge">mount</code> the directory from the master node. This will keep this folder the same across all of the nodes.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo mkdir /shared
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo mkdir /shared
 sudo mount 192.168.13.0:/shared /shared
 </code></pre>
 </div>
 
 <p>Use <code class="highlighter-rouge">ls</code> to look for /shared/test.txt to see if the mount is good. If you don’t see the file, again make sure you didn’t skip any steps on accident. If you do see the file, use <code class="highlighter-rouge">cat</code> to see if the correct sentence is in the file.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ls /shared/text.txt
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ls /shared/text.txt
 cat /shared/text.txt
 </code></pre>
 </div>
@@ -401,20 +401,20 @@ cat /shared/text.txt
 <p>We do this by editing the file that Lubuntu checks to see if there are any external filesystems to mount when it boots up.<br />
 Add line to <code class="highlighter-rouge">/etc/fstab</code>: <code class="highlighter-rouge">192.168.13.0:/shared  /shared  nfs  rw,noatime,hard,intr,vers=3  0 0</code></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>nano /etc/fstab
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>nano /etc/fstab
 </code></pre>
 </div>
 
 <p>Then just copy the line above into the file and close it like the last time we used <code class="highlighter-rouge">nano</code>.<br />
 Now we’ll reboot</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo reboot
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo reboot
 </code></pre>
 </div>
 
 <p>Log in and make sure that /shared is mounted by again running <code class="highlighter-rouge">ls</code></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ls /shared/text.txt
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ls /shared/text.txt
 </code></pre>
 </div>
 
@@ -422,7 +422,7 @@ Now we’ll reboot</p>
 
 <p>Complete this just like how we did on node0</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>192.168.13.0	node0
+<div class="language-text highlighter-rouge"><pre class="highlight"><code>192.168.13.0	node0
 192.168.13.1	node1
 192.168.13.2	node2
 192.168.13.3	node3
@@ -440,7 +440,7 @@ Now we’ll reboot</p>
 We’ll do this using <code class="highlighter-rouge">scp</code> or <strong>s</strong>ecure <strong>c</strong>o<strong>p</strong>y. We use scp to make sure no one can listen in on the conversation and copy the key. It’s not really necessary in this situation, but it’s a good practice.<br />
 When we use scp, we’ll tell it that we’re copying an entire di<strong>r</strong>ectory with <code class="highlighter-rouge">-r</code> - in this case we’re copying from <code class="highlighter-rouge">node0</code>. We can just use the name because we set up all of the <code class="highlighter-rouge">/etc/hosts/</code> entries above. Then we give it the host <code class="highlighter-rouge">node0</code> and the file <code class="highlighter-rouge">~/.ssh</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>scp -r node0:~/.ssh ~
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>scp -r node0:~/.ssh ~
 </code></pre>
 </div>
 
@@ -457,7 +457,7 @@ From this point forward we can do everything from the master node, <code class="
   <li>
     <p><strong>C</strong>hange <strong>d</strong>irectories into the <code class="highlighter-rouge">shared</code> directory.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>cd /shared
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd</span> /shared
 </code></pre>
     </div>
 
@@ -466,14 +466,14 @@ From this point forward we can do everything from the master node, <code class="
   <li>
     <p><strong>M</strong>a<strong>k</strong>e the <strong>dir</strong>ectory <code class="highlighter-rouge">hello_world</code> in this directory.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>mkdir hello_world
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>mkdir hello_world
 </code></pre>
     </div>
   </li>
   <li>
     <p><strong>C</strong>hange <strong>d</strong>irectories into the <code class="highlighter-rouge">hello_world</code> directory.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>cd hello_world
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd </span>hello_world
 </code></pre>
     </div>
   </li>
@@ -481,7 +481,7 @@ From this point forward we can do everything from the master node, <code class="
     <p>Download the programs we’ll use to test.<br />
 We’ll do this by using <code class="highlighter-rouge">wget</code> to download the files from a url.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>wget https://github.com/OSU-HPCC/example_submission_scripts/raw/master/compiling_and_running/mpi/makefile
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>wget https://github.com/OSU-HPCC/example_submission_scripts/raw/master/compiling_and_running/mpi/makefile
 wget https://github.com/OSU-HPCC/example_submission_scripts/raw/master/compiling_and_running/mpi/hello_world_mpi.c
 </code></pre>
     </div>
@@ -489,7 +489,7 @@ wget https://github.com/OSU-HPCC/example_submission_scripts/raw/master/compiling
   <li>
     <p>Use the program <code class="highlighter-rouge">make</code> to automatically compile the files your just downloaded.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>make
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>make
 </code></pre>
     </div>
   </li>
@@ -500,7 +500,7 @@ We tell it the <strong>n</strong>umber of <strong>p</strong>rocesses to use by g
 Then we tell it which two nodes will <code class="highlighter-rouge">host</code> the program.<br />
 Finally we tell it the location of the program itself, which is <code class="highlighter-rouge">./hello_world_mpi</code></p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>mpirun -np 2 -host node0,node1 ./hello_world_mpi
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>mpirun -np 2 -host node0,node1 ./hello_world_mpi
 </code></pre>
     </div>
   </li>
@@ -514,21 +514,21 @@ This is a slightly more fun program.</p>
     <p>For this one we need to install a new program that GalaxSee uses.<br />
 Again, we’ll use <code class="highlighter-rouge">apt-get install</code> to get the program.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install libx11-dev
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo apt-get install libx11-dev
 </code></pre>
     </div>
   </li>
   <li>
     <p>Make sure you’re in the <code class="highlighter-rouge">shared</code> folder again.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>cd /shared
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd</span> /shared
 </code></pre>
     </div>
   </li>
   <li>
     <p>Download the GalaxSee program itself using <code class="highlighter-rouge">wget</code> again.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>wget https://www.shodor.org/refdesk/Resources/Tutorials/MPIExamples/Gal.tgz
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>wget https://www.shodor.org/refdesk/Resources/Tutorials/MPIExamples/Gal.tgz
 </code></pre>
     </div>
   </li>
@@ -536,14 +536,14 @@ Again, we’ll use <code class="highlighter-rouge">apt-get install</code> to get
     <p>Now we have to uncompress the program, because it’s all stored in Gal.tgz but we need access to the files.<br />
 We do this with the <code class="highlighter-rouge">tar</code> command, and use a small slew of flags to tell it to extract it to the current folder.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>tar -zxvf Gal.tgz
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>tar -zxvf Gal.tgz
 </code></pre>
     </div>
   </li>
   <li>
     <p><strong>C</strong>hange <strong>d</strong>irectories into the new folder that was made.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>cd Gal
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd </span>Gal
 </code></pre>
     </div>
   </li>
@@ -551,7 +551,7 @@ We do this with the <code class="highlighter-rouge">tar</code> command, and use 
     <p>Modify the <code class="highlighter-rouge">Makefile</code> to compile the program to work on our particular cluster setup.<br />
 To do this with <code class="highlighter-rouge">nano</code> use</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>nano Makefile
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>nano Makefile
 </code></pre>
     </div>
 
@@ -563,7 +563,7 @@ Change <code class="highlighter-rouge">/opt/mpich/include</code> to <code class=
   <li>
     <p>Compile the program.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>make
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>make
 </code></pre>
     </div>
   </li>
@@ -571,13 +571,13 @@ Change <code class="highlighter-rouge">/opt/mpich/include</code> to <code class=
 
 <p>###To run the program on just one node</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mpirun -np 1 -host node0 ./GalaxSee 1000 5.5 10000.0 1
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>mpirun -np 1 -host node0 ./GalaxSee 1000 5.5 10000.0 1
 </code></pre>
 </div>
 
 <p>###To run on two nodes</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mpirun -np 2 -host node0,node1 ./GalaxSee 1000 5.5 50000.0 1
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>mpirun -np 2 -host node0,node1 ./GalaxSee 1000 5.5 50000.0 1
 </code></pre>
 </div>
 
@@ -594,14 +594,14 @@ Change <code class="highlighter-rouge">/opt/mpich/include</code> to <code class=
 <p>If you don’t have a controller or can’t get it connected, you can still do everything with your keyboard and mouse.<br />
 If running linux on your physical host (i.e. desktop or laptop) add yourself to the group <code class="highlighter-rouge">vboxusers</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo usermod --groups vboxusers --append username
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo usermod --groups vboxusers --append username
 </code></pre>
 </div>
 
 <p>Log out and back in, or do some hacky stuff to get your groups reevaluated and start virtualbox from command line (e.g. <code class="highlighter-rouge">newgrp vboxusers; newgrp originalgroup; virtualbox &amp;</code>).</p>
 
 <p>Edit settings for node0 in VirtualBox</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>	USB
+<div class="language-text highlighter-rouge"><pre class="highlight"><code>	USB
 		Create New Filter
 		Edit the filter
 			Name: Xbox360 Controller
@@ -617,7 +617,7 @@ Log into node0<br />
 Start terminal<br />
 Check to see if the VM sees the Xbox360 controller</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>lsusb
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>lsusb
 </code></pre>
 </div>
 
@@ -628,14 +628,14 @@ On the slave nodes run: <code class="highlighter-rouge">sudo apt-get install lub
 
 <h2 id="install-tinytitan-programs">Install TinyTitan programs</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>cd /shared
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd</span> /shared
 mkdir TinyTitan
-cd TinyTitan
+<span class="nb">cd </span>TinyTitan
 git clone https://github.com/TinyTitan/SPH
-cd SPH
+<span class="nb">cd </span>SPH
 cp makefile_jetson makefile_lubuntu
-#sudo apt-get install pkg-config
-#pkg-config glfw3 --libs --cflags
+sudo apt-get install pkg-config
+pkg-config glfw3 --libs --cflags
 nano makefile_lubuntu
 </code></pre>
 </div>
@@ -644,19 +644,19 @@ nano makefile_lubuntu
 Change <code class="highlighter-rouge">-lglfw3</code> to <code class="highlighter-rouge">-lglfw</code>.<br />
 Add <code class="highlighter-rouge">liquid_gl.c</code> into the compile line before <code class="highlighter-rouge">mover_gl.c</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>make -f makefile_lubuntu
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>make -f makefile_lubuntu
 </code></pre>
 </div>
 
 <h2 id="optional-start-the-xbox-controller-driver">(Optional) Start the Xbox controller driver</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo xboxdrv --mouse --axismap -Y1=Y1 --config /shared/TinyTitan/SPH/controller_2.cnf --silent &amp;
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo xboxdrv --mouse --axismap -Y1<span class="o">=</span>Y1 --config /shared/TinyTitan/SPH/controller_2.cnf --silent &amp;
 </code></pre>
 </div>
 
 <h2 id="run-sph-with-two-threads-the-absolute-minimum-one-for-display-and-one-for-computation">Run SPH with two threads (the absolute minimum; one for display and one for computation)</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mpirun -np 2 -hosts node0,node1 bin/sph.out
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>mpirun -np 2 -hosts node0,node1 bin/sph.out
 </code></pre>
 </div>
 
@@ -679,7 +679,7 @@ libcr-dev mpich2 mpich2-doc</p>
 
 <p>To make sudo not require a password:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo echo “pi ALL=(ALL) NOPASSWD: ALL” &gt; /etc/sudoers.d/pi_nopasswd
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo <span class="nb">echo</span> “pi <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> NOPASSWD: ALL” &gt; /etc/sudoers.d/pi_nopasswd
 </code></pre>
 </div>
 
