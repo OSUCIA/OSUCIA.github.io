@@ -8,7 +8,7 @@
 	<title>Virtual HPC</title>
 	<meta name="description" content="OSU Cyberinsfrastructure Association">
 	
-	<link rel="canonical" href="/pages/Creating%20Virtual%20Clusters/">
+	<link rel="canonical" href="/pages/Virtual%20HPC/">
 	<link rel="alternate" type="application/rss+xml" title="OSU CIA" href="/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/css/main.css"> -->
@@ -93,8 +93,8 @@
         
           
             
-              <li class="active">
-              
+              <li>
+            
             <a href="/pages/Creating%20Virtual%20Clusters/"><span class="glyphicon "></span> Virtual HPC</a></li>
           
         
@@ -107,8 +107,8 @@
         
           
             
-              <li>
-            
+              <li class="active">
+              
             <a href="/pages/Virtual%20HPC/"><span class="glyphicon "></span> Virtual HPC</a></li>
           
         
@@ -126,9 +126,9 @@
 
 
     <div id="main" class="container main">
-      <p>###Prerequisites</p>
+      <h3 id="prerequisites">Prerequisites</h3>
 
-<p>####Desktop or laptop with</p>
+<h4 id="desktop-or-laptop-with">Desktop or laptop with</h4>
 
 <ul>
   <li>An Intel-compatible processor with 2 or more cores</li>
@@ -136,7 +136,7 @@
   <li>At least 20 GB free disk space</li>
 </ul>
 
-<p>####Download Lubuntu (16.04, 64-bit version)</p>
+<h4 id="download-lubuntu-1604-64-bit-version">Download Lubuntu (16.04, 64-bit version)</h4>
 
 <p>http://tiger.hpc.okstate.edu/lubuntu-16.04.1-alternate-amd64.iso<br />
 Or http://cdimages.ubuntu.com/lubuntu/releases/xenial/release/lubuntu-16.04-alternate-amd64.iso<br />
@@ -145,9 +145,9 @@ md5sum:</p>
   <li>c773824ab270455471a9086ee29242eb *lubuntu-16.04.1-alternate-amd64.iso</li>
 </ul>
 
-<p>####Download &amp; Install VirtualBox: https://www.virtualbox.org/wiki/Downloads</p>
+<h4 id="download--install-virtualbox-httpswwwvirtualboxorgwikidownloads">Download &amp; Install VirtualBox: https://www.virtualbox.org/wiki/Downloads</h4>
 
-<p>#Step One: Setup VM for master node</p>
+<h1 id="step-one-setup-vm-for-master-node">Step One: Setup VM for master node</h1>
 
 <p>Create VM / Configure virtual hardware<br />
 New VM</p>
@@ -513,8 +513,8 @@ Finally we tell it the location of the program itself, which is <code class="hig
   </li>
 </ol>
 
-<p>##GalaxSee
-This is a slightly more fun program.</p>
+<h2 id="galaxsee">GalaxSee</h2>
+<p>This is a slightly more fun program.</p>
 
 <ol>
   <li>
@@ -576,25 +576,25 @@ Change <code class="highlighter-rouge">/opt/mpich/include</code> to <code class=
   </li>
 </ol>
 
-<p>###To run the program on just one node</p>
+<h3 id="to-run-the-program-on-just-one-node">To run the program on just one node</h3>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>mpirun -np 1 -host node0 ./GalaxSee 1000 5.5 10000.0 1
 </code></pre>
 </div>
 
-<p>###To run on two nodes</p>
+<h3 id="to-run-on-two-nodes">To run on two nodes</h3>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>mpirun -np 2 -host node0,node1 ./GalaxSee 1000 5.5 50000.0 1
 </code></pre>
 </div>
 
-<p>###To run the node on even more nodes</p>
+<h3 id="to-run-the-node-on-even-more-nodes">To run the node on even more nodes</h3>
 
 <p>Just increase the number after <code class="highlighter-rouge">-np</code>, and keep adding more node names to the list of nodes. You have 8 nodes right now.</p>
 
-<p>####Try opening a terminal and starting the <code class="highlighter-rouge">top</code> command on the slave node(s) before starting GalaxSee on the master node. You should see a GalaxSee process appear in the list of processes and disappear when the program finishes.</p>
+<h4 id="try-opening-a-terminal-and-starting-the-top-command-on-the-slave-nodes-before-starting-galaxsee-on-the-master-node-you-should-see-a-galaxsee-process-appear-in-the-list-of-processes-and-disappear-when-the-program-finishes">Try opening a terminal and starting the <code class="highlighter-rouge">top</code> command on the slave node(s) before starting GalaxSee on the master node. You should see a GalaxSee process appear in the list of processes and disappear when the program finishes.</h4>
 
-<p>#TinyTitan Stuff</p>
+<h1 id="tinytitan-stuff">TinyTitan Stuff</h1>
 
 <h2 id="optional-connect-xbox360-controller">(Optional) Connect Xbox360 Controller.</h2>
 
