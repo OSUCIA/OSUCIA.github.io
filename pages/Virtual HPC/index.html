@@ -119,7 +119,16 @@
 
 
     <div id="main" class="container main">
-      <h3 id="prerequisites">Prerequisites</h3>
+      <h1 id="before-arriving">Before Arriving</h1>
+
+<h4 id="or-just-do-it-now">(Or just do it now)</h4>
+
+<p><a href="https://www.virtualbox.org/wiki/Downloads">Download VirtualBox as below</a><br />
+<a href="https://drive.google.com/open?id=0B3Imkw3eMToZOWszSmJWbXU0QnM">Download this zip file</a><br />
+The file contains some premade virtual machines so that we don’t have to go through the installation process - it takes up too much time.<br />
+Unzip the zip file.</p>
+
+<h3 id="prerequisites">Prerequisites</h3>
 
 <h4 id="desktop-or-laptop-with">Desktop or laptop with</h4>
 
@@ -238,10 +247,10 @@ Now we need to configure the “VM only” adapter to talk to all of the other m
 We pass <code class="highlighter-rouge">nmcli</code> the <code class="highlighter-rouge">c</code> flag, to indicate we’re wanting to modify a ‘c’onnection.<br />
 Then we tell it we want to <code class="highlighter-rouge">add</code> a connection named (<code class="highlighter-rouge">con-name</code>) <code class="highlighter-rouge">cluster</code><br />
 We then give it the <code class="highlighter-rouge">ifname</code> (<strong>i</strong>nter<strong>f</strong>ace <strong>name</strong>), which is the name fo the devide we found above.<br />
-Next we tell it the <code class="highlighter-rouge">type</code> of connection is <code class="highlighter-rouge">ethernet</code>, and give it an <code class="highlighter-rouge">ipv4</code> address of <code class="highlighter-rouge">192.168.13.0/24</code><br />
+Next we tell it the <code class="highlighter-rouge">type</code> of connection is <code class="highlighter-rouge">ethernet</code>, and give it an <code class="highlighter-rouge">ipv4</code> address of <code class="highlighter-rouge">192.168.13.13/24</code><br />
 Finally, we pass it <code class="highlighter-rouge">gw4</code> to tell it the <strong>g</strong>ate<strong>w</strong>ay for ipv<strong>4</strong> is its own ipv4 address that we just told it.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo nmcli c add con-name cluster ifname enp0s8 <span class="nb">type </span>ethernet ip4 192.168.13.0/24 gw4 192.168.13.0
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo nmcli c add con-name cluster ifname enp0s8 <span class="nb">type </span>ethernet ip4 192.168.13.13/24 gw4 192.168.13.13
 </code></pre>
     </div>
   </li>
@@ -283,7 +292,7 @@ We’ll tell the shell to <code class="highlighter-rouge">echo</code> our senten
   </li>
   <li>
     <p>Finally lets configure the settings of how to share the files in our <code class="highlighter-rouge">shared</code> folder.<br />
-To do this we need to add line to the file <code class="highlighter-rouge">/etc/exports</code>: <code class="highlighter-rouge">/shared 192.168.13.0/24(rw,no_root_squash,async,no_subtree_check)</code><br />
+To do this we need to add line to the file <code class="highlighter-rouge">/etc/exports</code>: <code class="highlighter-rouge">/shared 192.168.13.13/24(rw,no_root_squash,async,no_subtree_check)</code><br />
 You can do this with either <code class="highlighter-rouge">nano</code> or <code class="highlighter-rouge">vim</code>, but we’ll use <code class="highlighter-rouge">nano</code></p>
 
     <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo nano /etc/exports
@@ -310,7 +319,7 @@ We also need to update nsf to use these new settings. We do this by <code class=
 
 <p>Then you’ll add these to the file:</p>
 
-<div class="language-text highlighter-rouge"><pre class="highlight"><code>192.168.13.0	node0
+<div class="language-text highlighter-rouge"><pre class="highlight"><code>192.168.13.13	node0
 192.168.13.1	node1
 192.168.13.2	node2
 192.168.13.3	node3
@@ -368,7 +377,7 @@ sudo apt-get install nano vim curl openssh-server mpich mpich-doc nfs-common
 
 <p>This time we’ll run it almost the same as above, but we won’t have the same IP address for the node as for the gateway. We want this node to use node0 as the gateway, so we input the IP for node0 after <code class="highlighter-rouge">gw4</code>.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo nmcli c add con-name cluster ifname enp0s8 <span class="nb">type </span>ethernet ip4 192.168.13.1/24 gw4 192.168.13.0
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo nmcli c add con-name cluster ifname enp0s8 <span class="nb">type </span>ethernet ip4 192.168.13.1/24 gw4 192.168.13.13
 sudo nmcli c modify id cluster ipv4.route-metric 101
 </code></pre>
 </div>
@@ -376,7 +385,7 @@ sudo nmcli c modify id cluster ipv4.route-metric 101
 <h3 id="make-sure-the-internal-cluster-network-is-working">Make sure the internal cluster network is working</h3>
 
 <p>To do this we’ll <code class="highlighter-rouge">ping</code> the master node, if the master node responds we’re good to go. If not, make sure you didn’t skip any steps above. If you’re in the training session and this doesn’t work, now is a good time to put up your red sticky.</p>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ping 192.168.13.0
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ping 192.168.13.13
 </code></pre>
 </div>
 
@@ -385,13 +394,13 @@ sudo nmcli c modify id cluster ipv4.route-metric 101
 <p>We need to get access to that shared folder on all of the virtual machines, so first we <strong>m</strong>a<strong>k</strong>e the <strong>dir</strong>ectory on this machine, then we <code class="highlighter-rouge">mount</code> the directory from the master node. This will keep this folder the same across all of the nodes.</p>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo mkdir /shared
-sudo mount 192.168.13.0:/shared /shared
+sudo mount 192.168.13.13:/shared /shared
 </code></pre>
 </div>
 
 <p>Use <code class="highlighter-rouge">ls</code> to look for /shared/test.txt to see if the mount is good. If you don’t see the file, again make sure you didn’t skip any steps on accident. If you do see the file, use <code class="highlighter-rouge">cat</code> to see if the correct sentence is in the file.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ls /shared/text.txt
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ls /shared
 cat /shared/text.txt
 </code></pre>
 </div>
@@ -399,9 +408,9 @@ cat /shared/text.txt
 <h2 id="set-the-nfs-share-to-mount-automatically">Set the nfs share to mount automatically</h2>
 
 <p>We do this by editing the file that Lubuntu checks to see if there are any external filesystems to mount when it boots up.<br />
-Add line to <code class="highlighter-rouge">/etc/fstab</code>: <code class="highlighter-rouge">192.168.13.0:/shared  /shared  nfs  rw,noatime,hard,intr,vers=3  0 0</code></p>
+Add line to <code class="highlighter-rouge">/etc/fstab</code>: <code class="highlighter-rouge">192.168.13.13:/shared  /shared  nfs  rw,noatime,hard,intr,vers=3  0 0</code></p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>nano /etc/fstab
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo nano /etc/fstab
 </code></pre>
 </div>
 
@@ -414,7 +423,7 @@ Now we’ll reboot</p>
 
 <p>Log in and make sure that /shared is mounted by again running <code class="highlighter-rouge">ls</code></p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ls /shared/text.txt
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ls /shared
 </code></pre>
 </div>
 
@@ -422,7 +431,7 @@ Now we’ll reboot</p>
 
 <p>Complete this just like how we did on node0</p>
 
-<div class="language-text highlighter-rouge"><pre class="highlight"><code>192.168.13.0	node0
+<div class="language-text highlighter-rouge"><pre class="highlight"><code>192.168.13.13	node0
 192.168.13.1	node1
 192.168.13.2	node2
 192.168.13.3	node3
@@ -662,7 +671,7 @@ Add <code class="highlighter-rouge">liquid_gl.c</code> into the compile line bef
 
 <h4 id="mouse-and-xbox-controller-are-working-but-menu-sometimes-doesnt-appear-when-hitting-start-button-on-xbox-controller-esc-key-on-keyboard-works-move-cursor-over-the-terminal-option-and-hit-the-a-key-on-either-the-keyboard-or-xbox-controller-to-exit-the-l-key-toggles-between-liquid-and-particle-view-which-color-codes-the-individual-threads">Mouse and xbox controller are working but menu (sometimes?) doesn’t appear when hitting start button on xbox controller. Esc key on keyboard works. Move cursor over the Terminal option and hit the A key on either the keyboard or xbox controller to exit. The L key toggles between liquid and particle view (which color codes the individual threads).</h4>
 
-<p>#Notes</p>
+<h1 id="notes">Notes</h1>
 
 <p>Same /etc/hosts file on all nodes<br />
 Same user (with same UID) on all nodes<br />
