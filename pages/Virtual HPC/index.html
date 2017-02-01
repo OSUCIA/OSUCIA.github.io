@@ -300,7 +300,7 @@ You can do this with either <code class="highlighter-rouge">nano</code> or <code
     </div>
 
     <p>Make your changes and press ctrl-x, press y to save your changes, and press enter to keep the same filename.<br />
-We also need to update nsf to use these new settings. We do this by <code class="highlighter-rouge">export</code>ing the settings. The <code class="highlighter-rouge">ra</code> flags tell it to update all of its settings, and remove any invalid kernels and do generaly cleanup.</p>
+We also need to update nfs to use these new settings. We do this by <code class="highlighter-rouge">export</code>ing the settings. The <code class="highlighter-rouge">ra</code> flags tell it reexport all directories, rather than just some specific ones.</p>
 
     <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo exportfs -ra
 </code></pre>
@@ -389,7 +389,7 @@ sudo nmcli c modify id cluster ipv4.route-metric 101
 </code></pre>
 </div>
 
-<h3 id="mount-the-folder-we-shared-with-nsf">Mount the folder we shared with nsf</h3>
+<h3 id="mount-the-folder-we-shared-with-nfs">Mount the folder we shared with nfs</h3>
 
 <p>We need to get access to that shared folder on all of the virtual machines, so first we <strong>m</strong>a<strong>k</strong>e the <strong>dir</strong>ectory on this machine, then we <code class="highlighter-rouge">mount</code> the directory from the master node. This will keep this folder the same across all of the nodes.</p>
 
