@@ -130,12 +130,20 @@ Unzip the zip file.</p>
 
 <h3 id="prerequisites">Prerequisites</h3>
 
-<h4 id="desktop-or-laptop-with">Desktop or laptop with</h4>
+<h4 id="for-the-initial-2-vms-in-this-exercise">For the initial 2 VMs in this exercise</h4>
 
 <ul>
   <li>An Intel-compatible processor with 2 or more cores</li>
   <li>At least 4 GB RAM</li>
   <li>At least 20 GB free disk space</li>
+</ul>
+
+<h4 id="for-additional-vms-you-should-expect-to-need">For additional VMs you should expect to need</h4>
+
+<ul>
+  <li>1 more CPU core</li>
+  <li>Slightly over 1GB ram</li>
+  <li>Slightly over 9GB disk space</li>
 </ul>
 
 <h4 id="download-lubuntu-1604-64-bit-version">Download Lubuntu (16.04, 64-bit version)</h4>
@@ -490,8 +498,8 @@ From this point forward we can do everything from the master node, <code class="
     <p>Download the programs we’ll use to test.<br />
 We’ll do this by using <code class="highlighter-rouge">wget</code> to download the files from a url.</p>
 
-    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>wget https://github.com/OSU-HPCC/example_submission_scripts/raw/master/compiling_and_running/mpi/makefile
-wget https://github.com/OSU-HPCC/example_submission_scripts/raw/master/compiling_and_running/mpi/hello_world_mpi.c
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>wget https://raw.githubusercontent.com/OSU-HPCC/example_submission_scripts/master/compiling_and_running/mpi/makefile
+wget https://raw.githubusercontent.com/OSU-HPCC/example_submission_scripts/master/compiling_and_running/mpi/hello_world_mpi.c
 </code></pre>
     </div>
   </li>
@@ -671,32 +679,275 @@ Add <code class="highlighter-rouge">liquid_gl.c</code> into the compile line bef
 
 <h4 id="mouse-and-xbox-controller-are-working-but-menu-sometimes-doesnt-appear-when-hitting-start-button-on-xbox-controller-esc-key-on-keyboard-works-move-cursor-over-the-terminal-option-and-hit-the-a-key-on-either-the-keyboard-or-xbox-controller-to-exit-the-l-key-toggles-between-liquid-and-particle-view-which-color-codes-the-individual-threads">Mouse and xbox controller are working but menu (sometimes?) doesn’t appear when hitting start button on xbox controller. Esc key on keyboard works. Move cursor over the Terminal option and hit the A key on either the keyboard or xbox controller to exit. The L key toggles between liquid and particle view (which color codes the individual threads).</h4>
 
-<h1 id="notes">Notes</h1>
+<h1 id="extras">Extras</h1>
 
-<p>Same /etc/hosts file on all nodes<br />
-Same user (with same UID) on all nodes<br />
-Passwordless ssh<br />
-Choose to either setup nfs server or synchronize home directories of all nodes<br />
-Install mpi and other stuff</p>
+<p>This stuff isn’t needed for the cluster to function, but you might be interested in doing it.</p>
 
-<p>Ip forwarding on master node</p>
+<h3 id="passwordless-sudo">Passwordless sudo</h3>
 
-<p>https://jetcracker.wordpress.com/2012/03/01/how-to-install-mpi-in-ubuntu/<br />
-libcr-dev mpich2 mpich2-doc</p>
-
-<p>Create internal network (call it “Cluster”)</p>
-
-<p>To make sudo not require a password:</p>
+<p>Run sudo commands while logged in as pi without being prompted for a password.</p>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo <span class="nb">echo</span> “pi <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> NOPASSWD: ALL” &gt; /etc/sudoers.d/pi_nopasswd
 </code></pre>
 </div>
 
+<h3 id="no-gui">No GUI</h3>
+
+<p>Prevent the GUI from running when the computer is turned on (highly recommended for slave nodes)</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo systemctl <span class="nb">set</span>-default multi-user.target
+</code></pre>
+</div>
+
+<p>You may find that you need the GUI to run something. To start it manually run either of these:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo systemctl start lightdm.service
+</code></pre>
+</div>
+
+<p>or</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>startx
+</code></pre>
+</div>
+
+<p>If you decide that you want to start the GUI automatically again, run this</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo systemctl <span class="nb">set</span>-default graphical.target
+</code></pre>
+</div>
+
+<h3 id="route-through-the-master-node">Route through the master node</h3>
+
+<p>On a real system this is how you would network it properly. The difference with our system as done above is that each node has its own connection directly to the internet, which is not feasible with physical computers.</p>
+
+<ol>
+  <li>
+    <p>On the slave node(s), add Google’s public DNS server to DNS resolver list.</p>
+
+    <p>Since /etc/resolv.conf is managed dynamically on Lubuntu, you’ll have to add it to one of the resolveconf config files.</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo sh -c <span class="s2">"echo nameserver 8.8.8.8 &gt;&gt; /etc/resolveconf/resolv.conf.d/tail"</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Shutdown the slave node</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo shutdown -h now
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Remove the NAT adapter from through the VirtualBox settings</p>
+
+    <div class="language-text highlighter-rouge"><pre class="highlight"><code>Select the node in VirtualBox.
+Click the Machine menu → Settings.
+Click Network.
+Uncheck "Enable Network Adapter" for Adapter 1, then click OK.
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<p>Now we configure the master node to act like a router</p>
+<ol>
+  <li>
+    <p>Install netfilter-persistent. This allows you to easily make iptables rules permanent without having to modify any scripts.</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo apt-get install netfilter-persistent
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Setup iptables rules.</p>
+
+    <p>In the rules shown here, enp0s8 is the interface on the private cluster network and enp0s3 is the interface with internet access.
+We want to change the source address of connections from the slave nodes so that they appear to come from the master node.</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
+</code></pre>
+    </div>
+
+    <p>Forward anything from the cluster interface to the internet interface</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo iptables -A FORWARD -i enp0s8 -o enp0s3 -j ACCEPT
+</code></pre>
+    </div>
+
+    <p>Forward incoming replies back out to the cluster network.</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo iptables -A FORWARD -i enp0s3 -o enp0s8 -m state --state RELATED,ESTABLISHED -j ACCEPT
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Save the iptables rules</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo netfilter-persistent save
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Reload all the rules</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo netfilter-persistent reload
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Set the kernel flag to allow IP forwarding</p>
+
+    <p>Open /etc/sysctl.conf for editing with your preferred text editor</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo nano /etc/sysctl.conf
+</code></pre>
+    </div>
+
+    <p>Uncomment the following line:</p>
+
+    <div class="language-text highlighter-rouge"><pre class="highlight"><code>net.ipv4.ip_forward=1
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<p>Save changes and exit the text editor. In nano <code class="highlighter-rouge">ctrl-x</code>, <code class="highlighter-rouge">y</code>, <code class="highlighter-rouge">enter</code>.</p>
+
+<ol>
+  <li>Reprocess /etc/sysctl.conf to make the change effective</li>
+</ol>
+
+<p><code class="highlighter-rouge">bash
+   sudo sysctl -p /etc/sysctl.conf
+  </code></p>
+
+<p>Now go back to the slave node(s) for testing.</p>
+
+<p>Check to see what interfaces are active:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ifconfig
+</code></pre>
+</div>
+
+<p>You should only see <code class="highlighter-rouge">enp0s8</code> and <code class="highlighter-rouge">lo</code> (which is the loopback address). If you see <code class="highlighter-rouge">enp0s3</code> then you didn’t remove the NAT network adapter - you will be able to conenct to the internet, but it will be through the same system as in the original instructions.</p>
+
+<p>Check /etc/resolv.conf and verify that it has Google’s DNS server 8.8.8.8. It should be the only nameserver.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>cat /etc/resolv.conf
+</code></pre>
+</div>
+
+<p>Try communicating with the outside world and verify that it works.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ping -c 4 google.com
+</code></pre>
+</div>
+
+<p>You should recieve packets back.</p>
+
+<p>For more info on setting up NAT addressing, <a href="http://netfilter.org/documentation/HOWTO/NAT-HOWTO.html">click here</a>.</p>
+
+<h3 id="expansion-by-cloning">Expansion by cloning</h3>
+
+<p>To expand the number on nodes by cloning previous nodes (and reducing the number of steps for the new node) follow this, substituting 2’s for whatever number of node you’re making.</p>
+
+<p>Make sure node1 is powered off.</p>
+
+<div class="language-text highlighter-rouge"><pre class="highlight"><code>Select node1 in VirtualBox and click the Machine menu → Clone.  
+Enter node2 (or some other number) as the new name and choose to reinitialize MAC address of all network cards.  
+Choose "Linked Clone". Instead of using the full space of the disk image, the new VM's disk image will only contain the difference between it and node1.  
+</code></pre>
+</div>
+
+<p>Start the new node and login as the user <code class="highlighter-rouge">pi</code>.</p>
+
+<p>Change the hostname from node1 to node2 using your preferred text editor.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo nano /etc/hostname
+</code></pre>
+</div>
+
+<p>Change the IP address to node2’s IP.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo nmcli c modify id cluster ipv4.address 192.168.13.2/24
+</code></pre>
+</div>
+
+<p><strong>For node 3 it would be 192.168.13.3/24, and so on for other nodes.</strong></p>
+
+<p>Restart the cluster connection.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo nmcli c down id cluster
+sudo nmcli c up id cluster
+</code></pre>
+</div>
+
+<p>Make sure the cluster interface came up with the new IP address.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ifconfig
+</code></pre>
+</div>
+
+<p>You should see the IP you entered two steps before this.</p>
+
+<p>And make sure it’s working.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ping node0
+</code></pre>
+</div>
+
+<p>Remove existing host keys.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo rm /etc/ssh/ssh_host_<span class="k">*</span>
+</code></pre>
+</div>
+
+<p>Generate new host keys</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo dpkg-reconfigure openssh-server
+</code></pre>
+</div>
+
+<p>Restart</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo reboot
+</code></pre>
+</div>
+
+<p>From the master node, add the slave node’s host key to your known_hosts file.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ssh-keyscan -t rsa node2 &gt;&gt; ~/.ssh/known_hosts
+</code></pre>
+</div>
+
+<p>Test to make sure you can ssh from the master node to node2 without a password.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ssh node2
+</code></pre>
+</div>
+
+<p>You can now start node1 again; all nodes should be able to ping each other.</p>
+
+<h1 id="notes">Notes</h1>
+
+<p>The basics of a Beowulf-type cluster:</p>
+<ul>
+  <li>Same /etc/hosts file on all nodes</li>
+  <li>Same user (with same UID) on all nodes</li>
+  <li>Passwordless ssh</li>
+  <li>Choose to either setup nfs server or synchronize home directories of all nodes</li>
+  <li>Install mpi and other stuff</li>
+</ul>
+
 <p>Network config options:</p>
 <ol>
-  <li>Each VM has both NAT and internal network connections (simpler)</li>
-  <li>Only master node has NAT; all VMs have internal network and route through master node (like HPCC’s Raspberry Pi cluster)</li>
+  <li>Each VM has both NAT and internal network connections (simpler, as done in basic instructions)</li>
+  <li>Only master node has NAT; all VMs have internal network and route through master node (like HPCC’s Raspberry Pi cluster, steps to
+do this are in the extras section)</li>
 </ol>
+
+<p>Since the user pi is the first and only user and is created during linux installation, we know it will have the same UID number on the master and slaves. This UID number should be “1000”. This can be verified with the command “id -u”. On systems that have already been setup, you’ll need to verify that your cluster user has the same UID on all nodes or create a new user with an explicitly assigned UID instead of letting the system choose.</p>
 
     </div>
 

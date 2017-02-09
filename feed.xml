@@ -5,9 +5,190 @@
     <description>OSU Cyberinsfrastructure Association</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 01 Feb 2017 15:22:31 -0600</pubDate>
-    <lastBuildDate>Wed, 01 Feb 2017 15:22:31 -0600</lastBuildDate>
+    <pubDate>Thu, 09 Feb 2017 10:01:55 -0600</pubDate>
+    <lastBuildDate>Thu, 09 Feb 2017 10:01:55 -0600</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>First General Meeting</title>
+        <description>&lt;h2 id=&quot;cyberinfrastructure-association&quot;&gt;Cyberinfrastructure Association&lt;/h2&gt;
+
+&lt;h3 id=&quot;meeting-minutes&quot;&gt;Meeting Minutes&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;4:03&lt;/strong&gt; Call to order&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4:03&lt;/strong&gt; Overview of software and hardware meetings&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;One or two per month each&lt;/li&gt;
+  &lt;li&gt;Software
+    &lt;ul&gt;
+      &lt;li&gt;Working toward solving Tulsa competition code&lt;/li&gt;
+      &lt;li&gt;Learning MPI&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Hardware
+    &lt;ul&gt;
+      &lt;li&gt;We’ll be using a loaned RPi cluster for now.&lt;/li&gt;
+      &lt;li&gt;Will be doing a tour of Cowboy for members new to supercomputering&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;4:05&lt;/strong&gt; Tulsa Competition&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;We can use Dr. Brunson’s Raspberry Pi cluster&lt;/li&gt;
+  &lt;li&gt;Barring unforeseeable events, we will be able to attend the competition&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;4:06&lt;/strong&gt; Club sponsorship&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Looking at CEAT Student Council for sponsor
+    &lt;ul&gt;
+      &lt;li&gt;Required bi-weekly meetings&lt;/li&gt;
+      &lt;li&gt;Must provide service hours as club (E.G. At least one member)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;4:07&lt;/strong&gt; Discuss Events&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Meet and greet
+    &lt;ul&gt;
+      &lt;li&gt;Would probably want to get some funding (people like these more with food)&lt;/li&gt;
+      &lt;li&gt;Looking at doing something like a game night w/ food and occasional breaks for info regarding supercomputing etc.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;MPI Training session
+    &lt;ul&gt;
+      &lt;li&gt;We welcome members from software team to come as helpers&lt;/li&gt;
+      &lt;li&gt;Like a “new user training” - fairly basic&lt;/li&gt;
+      &lt;li&gt;Being developed by Software Team Leader, who will be working with Phillip from HPC class&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;4:09&lt;/strong&gt; Scheduling&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Option one:
+    &lt;ul&gt;
+      &lt;li&gt;1st week - general meeting&lt;/li&gt;
+      &lt;li&gt;2nd week - software meeting&lt;/li&gt;
+      &lt;li&gt;3rd week - hardware meeting&lt;/li&gt;
+      &lt;li&gt;4th week - event/officer meeting&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Option two:
+    &lt;ul&gt;
+      &lt;li&gt;Biweekly general meetings which breakout into hardware and software team meetings&lt;/li&gt;
+      &lt;li&gt;Benefit: We’re not dragging people out for 5 minutes if we don’t have a lot to discuss at the general meeting&lt;/li&gt;
+      &lt;li&gt;Detriment: People would have to choose hardware or software, since they’re going at the same time&lt;br /&gt;
+&lt;strong&gt;Option two chosen&lt;/strong&gt; after short discussion&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;4:13&lt;/strong&gt; Goals and Focus for the semester&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Software team
+    &lt;ol&gt;
+      &lt;li&gt;Learn the basics of MPI&lt;/li&gt;
+      &lt;li&gt;Code for the Tulsa competition&lt;/li&gt;
+      &lt;li&gt;Find code challenges online and complete them using parallel coding&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Hardware Team Goals
+    &lt;ol&gt;
+      &lt;li&gt;Learn methods for internally connecting the cluster&lt;/li&gt;
+      &lt;li&gt;Learn how to install the OS and basic necessary programs&lt;/li&gt;
+      &lt;li&gt;Learn how to install and use administrative programs - schedulers, assignment, etc
+ *Club focus for the semester&lt;/li&gt;
+      &lt;li&gt;Learning&lt;/li&gt;
+      &lt;li&gt;Growth&lt;/li&gt;
+      &lt;li&gt;Competitions
+        &lt;ul&gt;
+          &lt;li&gt;Agreed that competitions and teaching events will spur growth, so focus on those for now&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;4:18&lt;/strong&gt; Funding&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Due to a mixup, not eligible to apply for AFAP funding
+    &lt;ul&gt;
+      &lt;li&gt;Potentially able to get some funding from them after we become eligible by another process&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Can still apply for SGA co-sponsorship events&lt;/li&gt;
+  &lt;li&gt;Fundraising
+    &lt;ul&gt;
+      &lt;li&gt;Benefit nights in restuarants (Not reliably funding, but potentially good for outreach)&lt;/li&gt;
+      &lt;li&gt;Sporting events (Low pay to help with concession stands etc.)&lt;/li&gt;
+      &lt;li&gt;Penny wars (?) or selling things (not available to us really)
+ *Discussion: If we get money, do we use it now or save it for next semester when we also have other resources for funding?&lt;/li&gt;
+      &lt;li&gt;Save it for next semester - people are less likely to join mid-semester&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;4:25&lt;/strong&gt; Competition&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Do we want to host a competition?&lt;/li&gt;
+  &lt;li&gt;We could start with internal competitions this semester, instead of trying to get a larger one going
+    &lt;ul&gt;
+      &lt;li&gt;Gives us some practice runs with less pressure, plus more time to schedule and plan a larger one.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;We could potentially enlist the German SC16 team in one competition via webstreaming or other
+    &lt;ul&gt;
+      &lt;li&gt;Tons of learning opportunity from a more established group&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;4:29&lt;/strong&gt; Closing statements&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Meeting in two weeks&lt;/li&gt;
+  &lt;li&gt;Will have hardware and software meetings that week&lt;/li&gt;
+  &lt;li&gt;Call to fill out doodle poll if interested in software/Tulsa competition&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;4:30&lt;/strong&gt; Meeting Adjourned&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4:30&lt;/strong&gt; Meeting re-opened&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4:30&lt;/strong&gt; Develop quote of “what we are”&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;“The Cyberinfrastructure Association’s goal is guiding educational and networking opportunities for OSU students interested in 
+ Cyberinfrastructure and High-Performance Computing. “&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;4:35&lt;/strong&gt; April 12th Conference&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Conference on how groups use computers/technology to improve their research&lt;/li&gt;
+  &lt;li&gt;Can lead a student breakout session on how student clubs use tech
+    &lt;ul&gt;
+      &lt;li&gt;Would gather some other clubs to speak as well, we would just lead the event&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;4:41&lt;/strong&gt; Business School Outreach&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;MSIS&lt;/li&gt;
+  &lt;li&gt;A lot of them deal with big data&lt;/li&gt;
+  &lt;li&gt;Marketting chair will look into getting some contacts for informing students about events etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;4:45&lt;/strong&gt; Meeting adjourned&lt;/p&gt;
+</description>
+        <pubDate>Wed, 08 Feb 2017 12:00:00 -0600</pubDate>
+        <link>/2017/02/08/GeneralMeeting/</link>
+        <guid isPermaLink="true">/2017/02/08/GeneralMeeting/</guid>
+        
+        
+      </item>
     
       <item>
         <title>Third General Meeting</title>
@@ -168,17 +349,6 @@
         <pubDate>Wed, 31 Aug 2016 13:00:00 -0500</pubDate>
         <link>/2016/08/31/GeneralMeeting/</link>
         <guid isPermaLink="true">/2016/08/31/GeneralMeeting/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Sample Post Title</title>
-        <description>&lt;h1 id=&quot;hello&quot;&gt;Hello!&lt;/h1&gt;
-</description>
-        <pubDate>Wed, 03 Aug 2016 15:00:00 -0500</pubDate>
-        <link>/2016/08/03/Sample/</link>
-        <guid isPermaLink="true">/2016/08/03/Sample/</guid>
         
         
       </item>
