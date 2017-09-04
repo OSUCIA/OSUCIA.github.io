@@ -22,6 +22,6 @@ cd ..
 jekyll build #Build the site using config defaults
 
 cd OutPut #Move to the output folder, containing the webpage section of the Git
-git add * #Add all of the updates
+git add -A  #Add all of the updates
 git commit -m "Auto update of webpage based on main git."
 git push
