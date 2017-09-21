@@ -5,6 +5,8 @@ cd ../Club #Move to the club's main Git folder
 git fetch #Fetch most recent update info
 git reset --hard origin #Verify files are only what is contained in the git.
 
+rm ../jekyll/pages/*.md
+
 for file in *.md; do
   mv -f "$file" ../jekyll/pages/"$file"
 done
