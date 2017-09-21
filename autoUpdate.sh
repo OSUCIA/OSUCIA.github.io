@@ -10,6 +10,7 @@ rm ../jekyll/pages/*.md
 for file in *.md; do
   mv -f "$file" ../jekyll/pages/"$file"
 done
+rm ../jekyll/pages/By-Laws.md
 
 mv Logo-Transparent.png ../jekyll/
 mv favicon.ico ../jekyll/
