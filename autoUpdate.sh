@@ -9,6 +9,9 @@ for file in *.md; do
   mv -f "$file" ../jekyll/pages/"$file"
 done
 
+mv Logo-Transparent.png ../jekyll/
+mv favicon.ico ../jekyll/
+
 cd Minutes
 rm ../../jekyll/_posts/*.md #Remove all currently shown - to make sure deleted/renamed files aren't displayed.
 for file in *.md; do
